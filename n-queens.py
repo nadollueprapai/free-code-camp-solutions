@@ -4,20 +4,38 @@ def dfs_n_queens(n):
         return []
     board = [['.'] * n for _ in range(n)]
     
-    def checkSafety(board, row, col):
+    def check_safety(board, row, col):
         print(f"Checking safety for row {row + 1}, column {col + 1}")
 
         #Check if its column is already occupied
-        for current_row in range(len(board)):
+        ##Check all rows using n as the range, e.g. range(4) 0,1,2,3
+        for current_row in range(n):
             if board[current_row][col] == "Q":
                 return print("Unsafe due to column occupation.")
         
+        #Check for diagonals
+        
+        ##Left diagonals first
+        i, j = row - 1, col - 1
+        while i >= 0 and j >= 0:
+            if board[i][j] == "Q":
+                return print("Unsafe due to left diagonal.")
+            i -= 1
+            j -= 1
+        ##Right diagonals next
+        i,j = row - 1, col + 1
+        while i >= 0 and j < n:
+            if board[i][j] == "Q":
+                return print("Unsafe due to right diagonal.")
+            i -= 1
+            j += 1
+
 
         return "safe"
     
     #First parameter is starting row as it will check all columns. No need for column parameter.
     #Second parameter is the current board.
-    def attemptPlace(row, board):
+    def attempt_place(row, board):
         #Check if the row is equal to the number.
         if row == n:
             #If so, store the solution.
@@ -39,13 +57,13 @@ def dfs_n_queens(n):
         print("")
         print(f"Checking row {row + 1}")
         for col in range(n):
-            if checkSafety(board, row, col) == "safe":
+            if check_safety(board, row, col) == "safe":
                 #If safe, then add a queen.
                 print(f"Safe, adding queen at row {row + 1}, column {col + 1}")
                 board[row][col] = "Q"
                 print(board)
                 #Keep going by proceeding to the next row, send the current board along as well.
-                attemptPlace(row + 1, board)
+                attempt_place(row + 1, board)
                 #After checking, remove the queen
                 board[row][col] = "."
             else:
@@ -56,12 +74,12 @@ def dfs_n_queens(n):
 
 
     #Call the recursive function.
-    attemptPlace(0,board)
+    attempt_place(0,board)
     return answers
 
 
 
-dfs_n_queens(4)
+print(dfs_n_queens(5))
 #Note: the print statements are humanized for ease of human understanding.
 
 #https://www.geeksforgeeks.org/dsa/n-queen-problem-backtracking-3/$0 was used as a learning resource while coding this.
