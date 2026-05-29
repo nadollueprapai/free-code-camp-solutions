@@ -165,12 +165,14 @@ function buildSchedule(tracks) {
 }
 
 function remixPlaylist(playlists, maxPerArtist) {
+    // Call each function to remix the playlist and turn it into a schedule.
     let flattenedPlaylists = flattenPlaylists(playlists);
     let scoredTracks = scoreTracks(flattenedPlaylists);
     let dedupedTracks = dedupeTracks(scoredTracks);
     let enforcedTracks = enforceArtistQuota(dedupedTracks, maxPerArtist);
     let schedule = buildSchedule(enforcedTracks);
 
+    // Return the schedule.
     return schedule;
 }
 
