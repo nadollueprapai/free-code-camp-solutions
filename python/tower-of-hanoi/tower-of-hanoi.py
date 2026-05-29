@@ -1,5 +1,5 @@
-# free-code-camp solutions
-This repository stores Nadol Lueprapai's submitted solutions to the problems included part of the freeCodeCamp Curriculum.
+"""
+DISCLAIMER
 
 The work contained within this file, and any related directories or materials contributing to similar objectives, is not intended to represent itself as the complete original work of Nadol Lueprapai.
 
@@ -18,6 +18,41 @@ This file and its contents are provided without intent to:
 
 All credited material, where applicable, remains the property of its respective owners.
 
-Artificial intelligence may have been utilized.
+Nadol Lueprapai did not devise the solution to this puzzle, he can only grasp a fraction of the logic needed for the solution. 
 
-Everything has been done in good faith.
+Artificial intelligence may have been utilized.
+"""
+
+def hanoi_solver(n):
+    #moves list for string returning
+    moves = []
+
+    #rods
+    left = list(range(n,0,-1))
+    mid = []
+    right = []
+
+    #append to the list, the starting position of rings
+    moves.append(f'{left} {mid} {right}')
+
+    def move(num, source, target, aux):
+        if num == 1:
+            target.append(source.pop())
+            moves.append(f'{left} {mid} {right}')
+            return
+        
+        move(num - 1, source, aux, target)
+
+        target.append(source.pop())
+        moves.append(f'{left} {mid} {right}')
+
+        move(num - 1, aux, target, source)
+
+    #start recursion
+    move(n, left, right, mid)
+
+    #return the joined up list
+    return '\n'.join(moves)
+
+if __name__ == '__main__':
+    print(hanoi_solver(5))
