@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    transition: background 0.3s, color 0.3s;
+    z-index: -1;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.theme-light {
+    background: #F9F6EE;
+}
+
+.theme-dark {
+    background: #999999;
+}
+
+#status {
+    text-align: center;
+    min-height: 20px;
+}
+
+[role="menuitem"] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
