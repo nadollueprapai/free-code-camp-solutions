@@ -96,6 +96,7 @@ def dfs_n_queens(n):
                 # checking the remaining columns.
                 # This else statement is not necessary,
                 # but it helps visualize failed placements.
+        print("")
 
     # Call the recursive function.
     attempt_place(0, board)
@@ -111,3 +112,5 @@ def dfs_n_queens(n):
 # https://www.geeksforgeeks.org/dsa/n-queen-problem-backtracking-3/
 
 # ChatGPT was used only to correct the grammar errors in the comments.
+
+print(dfs_n_queens(4));
