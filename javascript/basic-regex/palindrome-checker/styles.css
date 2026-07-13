@@ -1,33 +1,124 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #f5f5f5;
+    --surface: #ffffff;
+
+    --text: #222222;
+    --text-muted: #676767;
+
+    --border: #dddddd;
+    --shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
 body {
-    margin: auto;
-
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 1rem;
+    padding: 2rem;
+
+    background: var(--background);
 
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
 }
 
 main {
-    margin: 0;
+    width: min(500px, 100%);
 
     display: flex;
-    flex: 1;
     flex-direction: column;
 
     align-items: center;
-    justify-content: center;
+
+    gap: 1.5rem;
+
+    padding: 2.5rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
 
     text-align: center;
-    gap: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    letter-spacing: -0.04em;
 }
 
 div {
+    width: 100%;
+
     display: flex;
-    gap: 1rem;
+    align-items: center;
+
+    gap: 0.75rem;
+}
+
+input {
+    flex: 1;
+
+    padding: 0.75rem 1rem;
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+    color: var(--text);
+
+    font-size: 0.95rem;
+
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--text);
+}
+
+button {
+    padding: 0.75rem 1.25rem;
+
+    border: 1px solid var(--text);
+
+    background: var(--text);
+    color: var(--surface);
+
+    cursor: pointer;
+
+    font-size: 0.9rem;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+button:hover {
+    background: var(--surface);
+    color: var(--text);
+}
+
+#result {
+    min-height: 1.5rem;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+#explanation {
+    color: var(--text-muted);
+
+    line-height: 1.6;
+
+    font-size: 0.95rem;
 }

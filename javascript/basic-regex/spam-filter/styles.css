@@ -1,0 +1,135 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #f5f5f5;
+    --surface: #ffffff;
+
+    --text: #222222;
+    --accent: #333333;
+    --text-muted: #676767;
+
+    --border: #dddddd;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+
+    --radius: 6px;
+
+    --font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+
+    background: var(--background);
+    color: var(--text);
+
+    font-family: var(--font-family);
+    line-height: 1.6;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+main {
+    width: 100%;
+    max-width: 700px;
+
+    padding: 2rem;
+}
+
+.main-text {
+    margin: 25px 0;
+}
+
+.title {
+    font-size: 2.5rem;
+}
+
+.description {
+    margin-top: 15px;
+    font-size: 1.4rem;
+    color: var(--text-muted);
+}
+
+.message-label {
+    display: block;
+
+    margin-bottom: 20px;
+
+    font-size: 1.5rem;
+}
+
+textarea {
+    width: 100%;
+    max-width: 90%;
+
+    min-height: 150px;
+
+    padding: 1rem;
+
+    background: var(--surface);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+
+    font-size: 1.1rem;
+    font-family: inherit;
+
+    resize: vertical;
+    overflow: auto;
+}
+
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.btn {
+    display: block;
+
+    cursor: pointer;
+
+    width: 200px;
+
+    margin: 20px auto;
+
+    padding: 0.75rem 1rem;
+
+    color: var(--surface);
+    background: var(--accent);
+
+    border: 1px solid var(--accent);
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--surface);
+    color: var(--accent);
+}
+
+#result-message {
+    margin: 20px 0;
+
+    font-size: 2rem;
+}
+
+.footer {
+    margin-top: 10px;
+
+    color: var(--text-muted);
+}
