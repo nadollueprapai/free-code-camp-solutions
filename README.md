@@ -1,23 +1,8 @@
 # free-code-camp solutions
 This repository stores Nadol Lueprapai's submitted solutions to the problems included part of the freeCodeCamp Curriculum.
 
-The work contained within this file, and any related directories or materials contributing to similar objectives, is not intended to represent itself as the complete original work of Nadol Lueprapai.
+The work contained within this file, and any related directories or materials contributing to similar objectives, is not and does not intend to represent itself as the complete original work of Nadol Lueprapai. All credited material, where applicable, remains the property of its respective owners.
 
-Nadol Lueprapai does not claim exclusive or full ownership over all content contained within this file where such content is derived from, inspired by, adapted from, or modified from pre-existing works, concepts, or third-party sources.
+Artificial intelligence may have been utilized for stylistic purposes and where deemed reasonable while still striving to be academically honest.
 
-This work may include, but is not limited to:
-1. Adaptations of existing ideas or concepts;
-2. Modifications of pre-existing source material;
-3. Original contributions created in combination with referenced or derivative material.
-
-This file and its contents are provided without intent to:
-- Misrepresent authorship, ownership, or expertise;
-- Cause misunderstanding regarding the origin of the work;
-- Fabricate credentials or qualifications;
-- Commit fraud or deceptive practices of any kind;
-
-All credited material, where applicable, remains the property of its respective owners.
-
-Artificial intelligence may have been utilized.
-
-Everything has been done in good faith.
+Everything has been done in good faith and strives to stick to the spirit of academic progress and learning.
