@@ -1,0 +1,204 @@
+/* Styled by ChatGPT */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --background: #f5f5f5;
+    --surface: #ffffff;
+
+    --text: #222222;
+    --text-muted: #676767;
+
+    --accent: #111111;
+
+    --border: #dddddd;
+
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.12);
+
+    /* Layout */
+    --radius: 3px;
+
+    --font-family: Arial, Helvetica, sans-serif;
+
+    --content-width: 1100px;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+
+    font-family: var(--font-family);
+    line-height: 1.6;
+}
+
+/* Navigation */
+
+nav {
+    padding: 1rem 2rem;
+
+    background: var(--surface);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.fcc-logo {
+    display: block;
+
+    width: 210px;
+
+    margin: 0 auto;
+}
+
+/* Header */
+
+.title {
+    margin: 3rem 0 2rem;
+
+    text-align: center;
+
+    color: var(--text);
+}
+
+/* Table */
+
+.table-wrapper {
+    max-width: var(--content-width);
+
+    margin: 0 auto;
+
+    padding: 0 2rem;
+}
+
+table {
+    width: 100%;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    border-collapse: collapse;
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+th {
+    padding: 1rem;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--border);
+
+    background: var(--background);
+}
+
+td {
+    padding: 1rem;
+
+    border-bottom: 1px solid var(--border);
+}
+
+td:not(:first-child) {
+    text-align: center;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background: var(--background);
+}
+
+/* Links */
+
+.post-title {
+    color: var(--text);
+
+    text-decoration: none;
+
+    transition: opacity 0.2s ease;
+}
+
+.post-title:hover {
+    opacity: 0.7;
+}
+
+/* Categories */
+
+.category {
+    display: inline-block;
+
+    margin-top: 0.5rem;
+
+    padding: 0.25rem 0.6rem;
+
+    background: var(--background);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    color: var(--text-muted);
+
+    font-size: 0.85rem;
+
+    text-decoration: none;
+}
+
+/* Give every category the same minimalist look */
+
+.career,
+.feedback,
+.html-css,
+.support,
+.general,
+.javascript,
+.backend,
+.python,
+.motivation {
+    background: var(--background);
+}
+
+/* Avatars */
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+}
+
+.avatar-container img {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--border);
+}
+
+/* Mobile */
+
+@media (max-width: 750px) {
+
+    .table-wrapper {
+        padding: 0 1rem;
+
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 700px;
+    }
+}
