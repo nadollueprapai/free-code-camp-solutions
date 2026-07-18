@@ -15,6 +15,9 @@ function adjacencyListToMatrix(adjacencyList) {
             matrixRow[connectedNode] = 1;
         }
 
+        // Print out the matrix row.
+        console.log(matrixRow);
+
         // Add the matrix row to the adjacency matrix.
         adjacencyMatrix.push(matrixRow);
     }
