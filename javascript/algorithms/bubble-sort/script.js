@@ -1,10 +1,13 @@
 function bubbleSort(array) {
-    // Continue iterating until the array is sorted.
-    while (true) {
+    // Continue iterating until the array is sorted. Keeping track of iterations can help optimize.
+    for (let sortedCount = 0; sortedCount < array.length; sortedCount++) {
         let swapNeeded = false;
 
-        // Iterate from the first to the penultimate element of the array.
-        for (let i = 0; i < (array.length - 1); i++) {
+        /* 
+            Iterate from the first to the second-to-last unsorted element of the array, which we can determine with sortedCount.
+            The last elements would have already been sorted from previous iterations of the outer loop.
+        */
+        for (let i = 0; i < (array.length - sortedCount - 1); i++) {
             // Index the current and next element.
             const currentElement = array[i];
             const nextElement = array[i + 1];
