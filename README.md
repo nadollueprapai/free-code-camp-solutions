@@ -6,3 +6,5 @@ The work contained within this file, and any related directories or materials co
 Artificial intelligence may have been utilized for stylistic purposes and where deemed reasonable while still striving to be academically honest.
 
 Everything has been done in good faith and strives to stick to the spirit of academic progress and learning.
+
+Please enjoy browsing.
