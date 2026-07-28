@@ -31,6 +31,12 @@ const storageKey = "bookmarks"
 function getBookmarks() {
     // Access local storage data using the provided key.
     const getStorageJson = localStorage.getItem(storageKey);
+
+    // Code below originated from fCC forum.
+    if (!getStorageJson || !getStorageJson.trim().startsWith('[')) {
+        return [];
+    }
+
     let parsedJsonData = JSON.parse(getStorageJson);
 
     // Return an empty array if the data is invalid.
@@ -47,7 +53,6 @@ function getBookmarks() {
     // Test the objects of the array for valid data.
     let validData = true;
     parsedJsonData.forEach((testObject) => {
-        console.log(testObject)
         if (typeof testObject !== "object") {
             validData = false;
         }
@@ -77,6 +82,8 @@ function getBookmarks() {
 }
 
 let bookmarks = getBookmarks();
+
+console.log(bookmarks)
 
 function displayOrCloseForm() {
     // Update the category text to match the selected category.
@@ -115,6 +122,7 @@ function addBookmark() {
     }
 
     // Add the new bookmark to the array of bookmarks.
+    bookmarks = getBookmarks();
     bookmarks.push(newBookmarkObj);
 
     // Save the array of bookmarks to local storage.
@@ -131,12 +139,14 @@ function displayBookmarks() {
     // Clear the existing list of HTML.
     categoryList.innerHTML = ``;
 
+    // Reload bookmarks.
+    bookmarks = getBookmarks();
+
     // Iterate through each bookmark.
     bookmarks.forEach(
-        // Unpack each bookmark into its name, category, and url.
-        ({ name, category, url }) => {
+        (bookmark) => {
             // Skip elements that are not part of the category.
-            if (category != categoryDropdownEl.value) { return }
+            if (bookmark.category != categoryDropdownEl.value) { return }
 
             /* 
               Add a radio input button with id and value corresponding to the bookmark.
@@ -144,35 +154,34 @@ function displayBookmarks() {
               Lastly, wrap the entire list element in a div.
             */
             categoryList.innerHTML += `
-        <div>
-          <input type="radio" id="${name}" value="${name}" name="bookmark-radio">
-          <label for="${name}">
-            <a href="${url}">${name}</a>
-          </label>
-        </div>
-      `;
+            <div>
+            <input type="radio" id="${bookmark.name}" value="${bookmark.name}" name="${bookmark.category}">
+            <label for="${bookmark.name}"><a href="${bookmark.url}">${bookmark.name}</a></label>
+            </div>`;
         }
     )
 
     // Check if the category list element is empty, meaning there are no bookmarks in this category.
     if (!categoryList.innerHTML) {
         // Set the category list to reflect the situation.
-        categoryList.innerHTML = "<p>No Bookmarks Found</p>"
+        categoryList.innerHTML += "<p>No Bookmarks Found</p>"
     }
 }
 
 function deleteSelectedBookmark() {
     // First determine the bookmark that we are going to delete.
-    const selectedRadio = document.querySelector('input[name="bookmark-radio"]:checked');
+    const selectedRadio = categoryList.querySelector(`input[name=${categoryDropdownEl.value}]:checked`);
 
-    // Determine the index at which the selected bookmark is using findIndex to match id.
-    const selectedBookmarkArrayIndex = bookmarks.findIndex((bookmark) => bookmark.name === selectedRadio.id);
+    // Determine the index at which the selected bookmark is using findIndex to match id and category.
+    const selectedBookmarkArrayIndex = bookmarks.findIndex((bookmark) => bookmark.name === selectedRadio.id && bookmark.category === categoryDropdownEl.value);
 
     // Remove the item from the bookmarks array.
     bookmarks.splice(selectedBookmarkArrayIndex, 1);
 
     // Update local storage to remove the selected item.
     localStorage.setItem(storageKey, JSON.stringify(bookmarks));
+
+    bookmarks = getBookmarks();
 
     // Call the function to update the display.
     displayBookmarks();
@@ -203,11 +212,11 @@ addBookmarkBtn.addEventListener(
 viewCategoryBtn.addEventListener(
     "click",
     () => {
-        // Update the display of bookmarks first.
-        displayBookmarks();
-
         // Show the category list section.
         displayOrHideCategory();
+
+        // Update the display of bookmarks.
+        displayBookmarks();
     }
 );
 
