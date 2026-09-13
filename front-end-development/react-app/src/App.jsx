@@ -1,19 +1,17 @@
 import React, { lazy, Suspense } from 'react';
 
 const currentExerciseCategory = "react-fundamentals";
-const currentExerciseName = "tic-tac-toe";
+const currentExerciseName = "digital-pet-game";
 
 const CurrentExercise = lazy(() =>
   import(
-    `/workspaces/free-code-camp-solutions/front-end-development/react-state-hooks-routing/tic-tac-toe/index.jsx`
+    `/workspaces/free-code-camp-solutions/front-end-development/digital-pet-game/index.tsx`
   )
 );
 
 function App() {
   return (
     <>
-      <h1>{currentExerciseName}</h1>
-
       <Suspense fallback={<div>Loading exercise...</div>}>
         <CurrentExercise />
       </Suspense>
