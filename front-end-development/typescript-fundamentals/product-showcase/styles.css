@@ -1,106 +1,183 @@
+:root {
+    --background: #f5f5f5;
+    --surface: #ffffff;
+    --text: #222222;
+    --accent: #111111;
+    --text-muted: #676767;
+    --border: #dddddd;
+
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.12);
+
+    --radius: 3px;
+    --content-width: 1100px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%);
-    padding: 40px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    padding: 2rem;
     margin: 0;
-    color: #1a1a1a;
+    color: var(--text);
     min-height: 100vh;
 }
 
+/* ---------- Heading ---------- */
+
 h1 {
     text-align: center;
-    margin-bottom: 40px;
-    color: #ffffff;
+    margin: 0 auto 2rem;
+    max-width: var(--content-width);
+
+    color: var(--text);
     font-size: 2.5rem;
     font-weight: 600;
     letter-spacing: -0.5px;
 }
 
+/* ---------- Filter Buttons ---------- */
+
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 40px;
+    gap: 0.5rem;
+    margin: 0 auto 2rem;
+    max-width: var(--content-width);
     flex-wrap: wrap;
 }
 
 button {
-    padding: 12px 24px;
-    font-size: 15px;
+    padding: 0.7rem 1.25rem;
+
+    font-family: inherit;
+    font-size: 0.95rem;
     font-weight: 500;
+
     cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    background: var(--surface);
+    color: var(--text);
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+
+    box-shadow: var(--shadow);
 }
 
 button:hover {
-    background: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #fafafa;
+    border-color: #c8c8c8;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-hover);
 }
 
 button.active {
-    background: #ff9800;
-    color: #1a1a1a;
-    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+
+    box-shadow: var(--shadow);
     font-weight: 600;
 }
+
+button.active:hover {
+    background: #222222;
+    border-color: #222222;
+}
+
+/* ---------- Item Grid ---------- */
 
 #output {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    max-width: 1200px;
+    gap: 1.25rem;
+
+    max-width: var(--content-width);
     margin: 0 auto;
 }
 
+/* ---------- Items ---------- */
+
 .item {
-    background: white;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    padding: 1.5rem;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0.75rem;
 }
 
 .item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
 }
+
+/* Category / Label */
 
 .item strong {
-    font-size: 12px;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #0f4c75;
-    font-weight: 700;
+    letter-spacing: 0.8px;
+
+    color: var(--text-muted);
+    font-weight: 600;
 }
 
-.item>div:not(.price) {
-    font-size: 16px;
-    color: #555;
+/* Description / Content */
+
+.item > div:not(.price) {
+    font-size: 1rem;
+    color: var(--text-muted);
     line-height: 1.5;
 }
 
+/* Price */
+
 .price {
     margin-top: auto;
-    font-size: 24px;
-    font-weight: 700;
-    color: #0f4c75;
-    padding-top: 12px;
-    border-top: 2px solid #f0f0f0;
+    padding-top: 0.75rem;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    color: var(--text);
+
+    border-top: 1px solid var(--border);
 }
 
+/* ---------- Tablet ---------- */
+
 @media (max-width: 768px) {
+    body {
+        padding: 1.5rem;
+    }
+
     #output {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 16px;
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(250px, 1fr)
+        );
+        gap: 1rem;
     }
 
     h1 {
@@ -108,21 +185,40 @@ button.active {
     }
 
     .item {
-        padding: 16px;
+        padding: 1.25rem;
     }
 }
 
+/* ---------- Mobile ---------- */
+
 @media (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+
     #output {
         grid-template-columns: 1fr;
     }
 
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .buttons {
+        gap: 0.4rem;
+    }
+
     button {
-        padding: 10px 16px;
-        font-size: 14px;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .item {
+        padding: 1rem;
     }
 
     .price {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 }
